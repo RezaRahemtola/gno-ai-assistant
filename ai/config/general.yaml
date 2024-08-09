@@ -12,7 +12,6 @@ model:
 # Agent config
 agent:
   max_completion_tries: 3
-  max_recurse_depth: 5
   system_prompt_template: "config/system_prompt.yaml"
 
 # ChatML config

@@ -50,7 +50,7 @@ class PromptGenerator:
 
         return system_prompt, used_tokens
 
-    def user_prompt(self, message: str, token_limit: int) -> tuple[str, int]:
+    def user_prompt(self, message: str, token_limit: int) -> str:
         """Build the prompt with user message"""
 
         prompt = f"{self.user_prepend}{self.line_separator}{message}{self.user_append}{self.line_separator}"
@@ -60,7 +60,7 @@ class PromptGenerator:
         if used_tokens > token_limit:
             raise OverflowError("PromptGenerator::user_prompt: exceeding token limit")
 
-        return prompt, used_tokens
+        return prompt
 
     def tool_prompt(self, tool_message: str) -> str:
         return f"{self.line_separator}{self.user_append}{self.line_separator}{self.user_prepend}tool{self.line_separator}{tool_message}{self.user_append}{self.line_separator}"

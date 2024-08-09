@@ -18,7 +18,6 @@ class Agent:
 
         # Agent
         self.max_completion_tries = config["agent"]["max_completion_tries"]
-        self.max_recurse_depth: int = config["agent"]["max_recurse_depth"]
         self.stop_sequences = config["chat_ml"]["stop_sequences"]
 
         # Utils
@@ -29,7 +28,7 @@ class Agent:
 
         system_prompt, used_system_tokens = self.prompt_generator.system_prompt(self.max_prompt_tokens)
 
-        user_prompt, _used_user_tokens = self.prompt_generator.user_prompt(
+        user_prompt = self.prompt_generator.user_prompt(
             message, token_limit=self.max_prompt_tokens - used_system_tokens
         )
 

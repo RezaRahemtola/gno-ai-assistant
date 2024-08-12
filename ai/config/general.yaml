@@ -1,9 +1,9 @@
 # Model config
 model:
   name: "Phi 3 mini"  # Unused, for information purposes only
-  api_url: "https://curated.aleph.cloud/vm/ad482633bac1f1fae071fb3908c49ebe8d30e3dbeb047051a8ee1b206f2ef830/completion"
+  api_url: "https://curated.aleph.cloud/vm/84df52ac4466d121ef3bb409bb14f315de7be4ce600e8948d71df6485aa5bcc3/completion"
 
-  max_prompt_tokens: 131072
+  max_prompt_tokens: 16384
   max_completion_tokens: 700
   temperature: 0.7
   top_p: 0.9
@@ -16,12 +16,10 @@ agent:
 
 # ChatML config
 chat_ml:
-  sys_prepend: "<|system|>"
-  sys_append: "<|end|>"
-  user_prepend: "<|user|>"
-  user_append: "<|end|><|assistant|>"
+  user_prepend: "<|im_start|>"
+  user_append: "<|im_end|>"
   stop_sequences:
-    - '<|end|>'
-    - '<|endoftext|>'
-    - '<|'
-    - '</|'
+    - "<|im_end|>"
+    - "<|endoftext|>"
+    - "</assistant"
+    - "</user"

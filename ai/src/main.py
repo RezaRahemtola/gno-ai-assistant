@@ -16,7 +16,7 @@ app = web.Application()
 sio.attach(app)
 
 @sio.on('message')
-async def handle_message(sid, question: str):
+async def handle_message(_sid, question: str):
     print('Received message: ', question)
     try:
         logger.debug("Starting...")
